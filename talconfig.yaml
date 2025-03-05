@@ -1,0 +1,47 @@
+---
+# The Talos image included in this config is for the following official extensions:
+#            - siderolabs/cloudflared
+#            - siderolabs/iscsi-tools
+#            - siderolabs/tailscale
+
+---
+clusterName: talos-cluster
+endpoint: https://192.168.0.11:6443
+talosVersion: v1.9.2
+nodes:
+  - machineSpec:
+      mode: metal
+      arch: amd64
+      secureboot: false
+    hostname: talos-control-plane-01
+    controlPlane: true
+    ipAddress: 192.168.0.11
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eno1
+        dhcp: false
+        addresses:
+        - 192.168.0.11/24
+        routes:
+          - gateway: 192.168.0.1
+patches:
+  - "@./patches/patch.yaml"
+#  - machineSpec:
+#      mode: metal
+#      arch: amd64
+#      secureboot: false 
+#    hostname: worker-01
+#    controlPlane: false
+#    ipAddress: 192.168.0.12
+#    installDisk: /dev/sdb
+#    nameserver:
+#      - time.cloudflare.com
+#    networkInterfaces:
+#      - interface: eno1
+#        dhcp: true
+#        addresses:
+#        - 192.168.0.12/24
+#        routes:
+#          - gateway: 192.168.0.1    
