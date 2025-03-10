@@ -1,8 +1,3 @@
----
-# The Talos image included in this config is for the following official extensions:
-#            - siderolabs/cloudflared
-#            - siderolabs/iscsi-tools
-#            - siderolabs/tailscale
 
 ---
 clusterName: talos-cluster
