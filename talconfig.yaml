@@ -1,42 +1,115 @@
-
 ---
 clusterName: talos-cluster
 endpoint: https://192.168.0.11:6443
-talosVersion: v1.9.2
+talosVersion: v1.9.5
 nodes:
-  - machineSpec:
-      mode: metal
-      arch: amd64
-      secureboot: false
-    hostname: talos-control-plane-01
+  - hostname: talos-cp-01
     controlPlane: true
     ipAddress: 192.168.0.11
     installDisk: /dev/sda
     nameserver:
       - time.cloudflare.com
     networkInterfaces:
-      - interface: eno1
+      - interface: eth0
         dhcp: false
         addresses:
         - 192.168.0.11/24
         routes:
           - gateway: 192.168.0.1
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-cp-02
+    controlPlane: true
+    ipAddress: 192.168.0.12
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.12/24
+        routes:
+          - gateway: 192.168.0.1
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-cp-03
+    controlPlane: true
+    ipAddress: 192.168.0.13
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.13/24
+        routes:
+          - gateway: 192.168.0.1
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-worker-01
+    controlPlane: false
+    ipAddress: 192.168.0.14
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.14/24
+        routes:
+          - gateway: 192.168.0.1    
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-worker-02
+    controlPlane: false
+    ipAddress: 192.168.0.15
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.15/24
+        routes:
+          - gateway: 192.168.0.1    
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-worker-03
+    controlPlane: false
+    ipAddress: 192.168.0.16
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.16/24
+        routes:
+          - gateway: 192.168.0.1    
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
 patches:
   - "@./patches/patch.yaml"
-#  - machineSpec:
-#      mode: metal
-#      arch: amd64
-#      secureboot: false 
-#    hostname: worker-01
-#    controlPlane: false
-#    ipAddress: 192.168.0.12
-#    installDisk: /dev/sdb
-#    nameserver:
-#      - time.cloudflare.com
-#    networkInterfaces:
-#      - interface: eno1
-#        dhcp: true
-#        addresses:
-#        - 192.168.0.12/24
-#        routes:
-#          - gateway: 192.168.0.1    
