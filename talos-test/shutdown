@@ -1,0 +1,7 @@
+#!/bin/bash
+
+talosctl shutdown -e 192.168.0.11 -n 192.168.0.11 --talosconfig clusterconfig/talosconfig &&
+talosctl shutdown -e 192.168.0.12 -n 192.168.0.12 --talosconfig clusterconfig/talosconfig &&
+talosctl shutdown -e 192.168.0.13 -n 192.168.0.13 --talosconfig clusterconfig/talosconfig
+
+echo "All node shutdowns commands have been initiated."

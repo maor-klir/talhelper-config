@@ -1,3 +1,5 @@
-cilium.yaml
-kubeconfig
-/clusterconfig
+/talos-test/clusterconfig
+/talos-staging/clusterconfig
+/talos-test/kubeconfig
+/talos-staging/kubeconfig
+

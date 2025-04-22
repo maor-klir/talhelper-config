@@ -1,0 +1,61 @@
+---
+clusterName: talos-staging
+endpoint: https://192.168.0.14:6443
+talosVersion: v1.9.5
+nodes:
+  - hostname: talos-staging-cp-01
+    controlPlane: true
+    ipAddress: 192.168.0.14
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.14/24
+        routes:
+          - gateway: 192.168.0.1
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-staging-worker-01
+    controlPlane: false
+    ipAddress: 192.168.0.15
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.15/24
+        routes:
+          - gateway: 192.168.0.1
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+  - hostname: talos-staging-worker-02
+    controlPlane: false
+    ipAddress: 192.168.0.16
+    installDisk: /dev/sda
+    nameserver:
+      - time.cloudflare.com
+    networkInterfaces:
+      - interface: eth0
+        dhcp: false
+        addresses:
+        - 192.168.0.16/24
+        routes:
+          - gateway: 192.168.0.1
+    schematic:
+      customization:
+        systemExtensions:
+          officialExtensions:
+            - siderolabs/qemu-guest-agent
+patches:
+  - "@./patches/patch.yaml"

@@ -1,0 +1,8 @@
+cluster:
+  allowSchedulingOnControlPlanes: false
+  network:
+    cni:
+      name: none
+  proxy:
+    disabled: true
+
