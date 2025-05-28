@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Navigate to the directory containing this script
+# This ensures the script works regardless of where it's called from
+cd "$(dirname "$0")"
+
 talosctl shutdown -e 192.168.0.14 -n 192.168.0.14 --talosconfig clusterconfig/talosconfig &&
 talosctl shutdown -e 192.168.0.15 -n 192.168.0.15 --talosconfig clusterconfig/talosconfig &&
 talosctl shutdown -e 192.168.0.16 -n 192.168.0.16 --talosconfig clusterconfig/talosconfig
