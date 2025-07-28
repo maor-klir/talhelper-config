@@ -1,5 +1,6 @@
 /talos-test/clusterconfig
 /talos-staging/clusterconfig
+/talos-mgmt/clusterconfig
 /talos-test/kubeconfig
 /talos-staging/kubeconfig
-
+/talos-mgmt/kubeconfig
