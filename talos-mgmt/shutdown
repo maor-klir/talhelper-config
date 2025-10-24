@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# Navigate to the directory containing this script
+# This ensures the script works regardless of where it's called from
+cd "$(dirname "$0")"
+
+talosctl shutdown -e 192.168.0.17 -n 192.168.0.17 --talosconfig clusterconfig/talosconfig
+
+echo "All node shutdowns commands have been initiated."
